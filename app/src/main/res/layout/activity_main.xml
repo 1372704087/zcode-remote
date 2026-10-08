@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zremote.console.EdgeDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <!-- 全屏主体：WebView + 未连接引导页（无顶栏、无底栏） -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="36dp"
+            android:paddingRight="36dp">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bg_badge"
+                android:contentDescription="@string/app_name"
+                android:padding="16dp"
+                android:src="@drawable/ic_logo"
+                android:tint="@color/accent_fg" />
+
+            <TextView
+                android:id="@+id/hint_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:lineSpacingExtra="6dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/btn_scan_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/ripple_pill_primary"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:minHeight="46dp"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:text="@string/scan_qr"
+                android:textColor="@color/accent_fg"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- 右缘手柄：点击或向左拖动都可拉出设置面板 -->
+    <FrameLayout
+        android:id="@+id/btn_handle"
+        android:layout_width="34dp"
+        android:layout_height="84dp"
+        android:layout_gravity="end|center_vertical"
+        android:clickable="true"
+        android:contentDescription="@string/open_settings"
+        android:focusable="true">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="46dp"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/bg_handle" />
+
+    </FrameLayout>
+
+    <!-- 遮罩：点击关闭面板 -->
+    <View
+        android:id="@+id/scrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scrim"
+        android:visibility="gone" />
+
+    <!-- 设置面板：从右侧滑出 -->
+    <LinearLayout
+        android:id="@+id/panel"
+        android:layout_width="@dimen/panel_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@color/surface"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/stroke" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="18dp"
+                android:paddingTop="14dp"
+                android:paddingRight="18dp"
+                android:paddingBottom="24dp">
+
+                <!-- 面板头部 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:background="@drawable/bg_badge"
+                        android:contentDescription="@string/app_name"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_logo"
+                        android:tint="@color/accent_fg" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_weight="1"
+                        android:text="@string/app_name"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_close_panel"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:contentDescription="@string/panel_close"
+                        android:focusable="true"
+                        android:padding="7dp"
+                        android:src="@drawable/ic_close"
+                        android:tint="@color/text_secondary" />
+
+                </LinearLayout>
+
+                <!-- 连接 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.06"
+                    android:text="@string/section_connect"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/btn_scan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_pill_primary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="44dp"
+                    android:text="@string/scan_connect"
+                    android:textColor="@color/accent_fg"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="@string/url_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textUri"
+                    android:maxLines="1"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btn_open_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/ripple_pill_ghost"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="40dp"
+                    android:text="@string/open_url"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_current"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="middle"
+                    android:lineSpacingExtra="3dp"
+                    android:maxLines="2"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@color/stroke" />
+
+                <!-- 运行 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.06"
+                    android:text="@string/section_run"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/keepalive_label"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/btn_keepalive"
+                        android:layout_width="64dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/ripple_pill_ghost"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="@string/keepalive_off"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ripple_pill_ghost"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="42dp"
+                    android:text="@string/refresh_page"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/btn_disconnect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/ripple_pill_ghost"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="42dp"
+                    android:text="@string/disconnect"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@color/stroke" />
+
+                <!-- 外观 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.06"
+                    android:text="@string/section_theme"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_segment"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:id="@+id/btn_theme_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:background="@drawable/ripple_segment_off"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="52dp"
+                        android:text="@string/theme_dark"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/btn_theme_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:background="@drawable/ripple_segment_off"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="52dp"
+                        android:text="@string/theme_light"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</com.zremote.console.EdgeDrawerLayout>

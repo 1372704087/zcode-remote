@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 侧滑设置面板宽度 -->
+    <dimen name="panel_width">300dp</dimen>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000">
+
+    <com.journeyapps.barcodescanner.DecoratedBarcodeView
+        android:id="@+id/barcode_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.zremote.console.ScanOverlayView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 顶栏：返回 + 标题 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="top"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="6dp"
+        android:paddingRight="16dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back"
+            android:padding="9dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@string/scan_title"
+            android:textColor="#FFFFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- 底部：提示 + 手电筒 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_hint"
+            android:textColor="#CCFFFFFF"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/btn_torch"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_circle_dark"
+            android:contentDescription="@string/torch"
+            android:padding="14dp"
+            android:src="@drawable/ic_flash_off" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZCode远程控制</string>
+    <string name="scan">扫码</string>
+    <string name="refresh">刷新</string>
+    <string name="keepalive_on">开</string>
+    <string name="keepalive_off">关</string>
+    <string name="scan_qr">扫描电脑上的二维码</string>
+    <string name="theme_dark">黑</string>
+    <string name="theme_light">白</string>
+    <string name="scan_title">扫描二维码</string>
+    <string name="scan_hint">将电脑上 Z.ai Code 的二维码放入框内</string>
+    <string name="back">返回</string>
+    <string name="torch">手电筒</string>
+
+    <!-- 侧滑设置面板 -->
+    <string name="panel_close">关闭设置</string>
+    <string name="open_settings">打开设置</string>
+    <string name="section_connect">连接</string>
+    <string name="scan_connect">扫码连接</string>
+    <string name="url_hint">粘贴控制台链接</string>
+    <string name="open_url">打开</string>
+    <string name="current_none">当前未连接</string>
+    <string name="current_prefix">当前连接：</string>
+    <string name="section_run">运行</string>
+    <string name="keepalive_label">保活</string>
+    <string name="refresh_page">刷新页面</string>
+    <string name="disconnect">断开当前连接</string>
+    <string name="section_theme">外观</string>
+    <string name="hint_connect">还没有连接。\n从屏幕右侧向左滑出设置面板，点「扫码连接」扫描电脑上 Z.ai Code 的二维码，即可在手机上给电脑的 AI 发消息。</string>
+</resources>

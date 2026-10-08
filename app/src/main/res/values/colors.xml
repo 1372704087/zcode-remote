@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 浅色（白）—— 取自 ZCode 的黑白单色体系 -->
+    <color name="bg">#FFF8F8F8</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_alt">#FFEDEDED</color>
+    <color name="stroke">#FFE6E6E6</color>
+    <color name="text_primary">#FF161616</color>
+    <color name="text_secondary">#FF5C5C5C</color>
+
+    <!-- 强调色 = 与背景反色，对应 ZCode 的白底黑箭头按钮 -->
+    <color name="accent_bg">#FF161616</color>
+    <color name="accent_fg">#FFFFFFFF</color>
+
+    <color name="segment_active">#FFFFFFFF</color>
+    <color name="ripple_color">#14000000</color>
+    <!-- 主按钮是深色底，水波纹要用亮色 -->
+    <color name="ripple_accent">#33FFFFFF</color>
+    <!-- 桌面图标底色：与界面中间的徽标一致，不随黑白主题变化 -->
+    <color name="icon_bg">#FFF0F0F0</color>
+
+    <!-- 侧滑面板遮罩 / 右缘手柄：浮在网页内容之上，因此黑白主题共用一套 -->
+    <color name="scrim">#99000000</color>
+    <color name="handle">#66888888</color>
+</resources>

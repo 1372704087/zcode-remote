@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.zremote.console'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.zremote.console"
+        minSdk 26
+        targetSdk 33
+        versionCode 11
+        versionName "2.0"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            // 使用 debug 签名，方便直接安装；正式发布请替换为自己的 keystore
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    // 固定输出文件名，便于查找
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "zremote-${variant.name}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.activity:activity:1.6.1'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+}
